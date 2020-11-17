@@ -9,6 +9,10 @@ class Doctor
     @appointments = []
   end
 
+  def self.all
+    @@all
+  end
+
   def add_appointment(appointment)
     @appointments << appointment
   end
