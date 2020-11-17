@@ -1,29 +1,21 @@
 class Doctor
-  attr_accessor :name, :appointment, :patient
+	attr_accessor :name
 
-  @@all = Array.new
+	def initialize(name)
+		@name = name
+		@appointments = []
+	end
 
-  def initialize(name)
-    @name = name
-    @@all << self
-  end
+	def add_appointment(appointment)
+		@appointments << appointment
+		appointment.doctor = self
+	end
 
-  def self.all
-    @@all
-  end
+	def appointments
+		@appointments
+	end
 
-  def new_appointment(date, patient)
-    Appointment.new(date, self, patient)
-  end
-
-  def appointments
-    Appointment.all.select do |apt|
-      apt.doctor == self
-      #binding.pry
-    end
-  end
-
-  def patients
-    appointments.collect { |apt| apt.patient }
-  end
+	def patients
+		self.appointments.collect { |appointment| appointment.patient }
+	end
 end
