@@ -10,6 +10,12 @@ class Appointment
     @@all << self
   end
 
+  def patient(doctor, date)
+    @doctor = Doctor.new(doctor)
+    @patient = Patient.new(patient)
+    @date = @patient.new_appointment(date, doctor)
+  end
+
   def self.all
     @@all
   end
