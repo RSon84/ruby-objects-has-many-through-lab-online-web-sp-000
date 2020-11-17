@@ -1,16 +1,10 @@
 class Appointment
-  attr_accessor :date, :doctor, :patient
+	attr_accessor :date, :doctor, :patient
 
-  @@all = Array.new
+	def initialize(date, doctor)
+		@date = date
+		@doctor = doctor
+		doctor.add_appointment(self)
+	end
 
-  def initialize(date, doctor, patient)
-    @date = date#.strftime("%A, %B %d")
-    @doctor = doctor
-    @patient = patient
-    @@all << self
-  end
-
-  def self.all
-    @@all
-  end
 end
