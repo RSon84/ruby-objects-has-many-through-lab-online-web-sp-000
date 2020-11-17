@@ -12,7 +12,8 @@ class Patient
   end
 
 	def new_appointment(appointment, doctor)
-		@appointment << appointment
+    appointment = Appointment.new(appointment, self, doctor)
+    @appointment << appointment
 		appointment.patient = self
 	end
 
